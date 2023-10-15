@@ -2,15 +2,23 @@ import random
 
 
 class Asshole:
-    def __init__(self, type_asshole, sex, age, hands_count=2):
+    def __init__(self, type_asshole, sex, age=0, hands_count=2):
         print("i'm is", type_asshole + "!")
         print("i'm is", sex)
         self.say = "Гутен таг"
         self._hands_count = hands_count
         self.type_of_armor = "leather"
+        self.age = age
         self._age = age
 
+
     age = property()
+
+    @staticmethod
+    def is_age_valid(age):
+        print("i'm fck statingmethod")
+        return 0 < age < 150
+
 
     @property
     def hands(self):
@@ -52,16 +60,16 @@ def main(name):
     slave = "slave"
     male = "male"
 
-    # unit_1 = Asshole(slave, male)
-    # unit_2 = Asshole("master", "male")
+    unit_1 = Asshole(slave, male)
+    unit_2 = Asshole("master", "male")
     unit_3 = Asshole("swordsman", "male", 10)
 
-    # if unit_1.status_available():
-    #     print("i'm available")
-    #     print(unit_1.say)
-    # else:
-    #     print("i'm busy")
-    #     unit_1.hands_count -= 1
+    if unit_1.status_available():
+        print("i'm available")
+        print(unit_1.say)
+    else:
+        print("i'm busy")
+        unit_1.hands_count -= 1
 
     if unit_3.abilityes():
         print("i'm shooting")
@@ -73,15 +81,16 @@ def main(name):
     print(unit_3.age)
     del unit_3.age
 
-    print("property")
-    unit_3.hands
-    print("--")
+    Asshole.is_age_valid(35)
 
-    # print("i have", unit_2.hands_count, "хандс штук")
-    # print("i have", unit_1.hands_count, "хандс штук")
-    #
-    # del unit_1
-    # print("ещё не конец")
+    # unit_3.hands
+
+
+    print("i have", unit_2.hands_count, "хандс штук")
+    print("i have", unit_1.hands_count, "хандс штук")
+
+    del unit_1
+    print("ещё не конец")
 
 
 # Press the green button in the gutter to run the script.
